@@ -37,9 +37,13 @@ const WelcomeScreen = () => {
                 </View>
 
                 <View style={styles.textContainer}>
-                    <Text style={styles.title}>EcoNexus</Text>
+                <Image
+                        source={require('../assets/images/logo.png')} // Replace with your logo path
+                        style={styles.logo}
+                    />
+                    <Text style={styles.title}>TrashTracker</Text>
                     <Text style={styles.subtitle}>
-                        working to embelish the society
+                    Track Your Trash. Save Your Planet
                     </Text>
                     {/* <TouchableOpacity style={styles.moreButton}>
                         <Text style={styles.moreButtonText}>More &gt;&gt;</Text>
@@ -166,6 +170,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
         textAlign: 'center',
+    },
+    logo: {
+        width: 100, // Adjust the width as needed
+        height: 100, // Adjust the height as needed
+        alignSelf: 'center',
+        marginBottom: 20,
+    resizeMode: 'contain',
     },
 });
 

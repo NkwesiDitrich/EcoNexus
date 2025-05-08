@@ -48,3 +48,11 @@ export const reports = [
     weight: 3
   }
 ];
+export const fetchCollectionPoints = async () => {
+  return [
+    { id: '1', type: 'Plastic', status: 'empty', distance: '500m' },
+    { id: '2', type: 'Organic', status: 'full', distance: '2km' },
+    { id: '3', type: 'Glass', status: 'in progress', distance: '1km' },
+  ];
+};
+

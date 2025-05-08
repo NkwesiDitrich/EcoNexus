@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert, Text, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  Alert,
+  SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+  Dimensions
+} from 'react-native';
 import { useReportContext } from '../Context/ReportContext';
 
 const AddReportScreen = () => {
@@ -29,82 +41,94 @@ const AddReportScreen = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-      style={styles.container}
-    >
-      <ScrollView contentContainerStyle={styles.scroll}>
-        <View style={styles.form}>
-          <Text style={styles.title}>Submit a Waste Report</Text>
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={{ flex: 1 }}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.formContainer}>
+            <Text style={styles.title}>Report Waste</Text>
 
-          <TextInput
-            style={styles.input}
-            placeholder="Type of Waste"
-            value={type}
-            onChangeText={setType}
-          />
+            <TextInput
+              style={styles.input}
+              placeholder="Type of Waste"
+              value={type}
+              onChangeText={setType}
+              placeholderTextColor="#7C888D"
+            />
 
-          <TextInput
-            style={styles.input}
-            placeholder="Weight (kg)"
-            value={weight}
-            onChangeText={setWeight}
-            keyboardType="numeric"
-          />
+            <TextInput
+              style={styles.input}
+              placeholder="Weight (kg)"
+              value={weight}
+              onChangeText={setWeight}
+              keyboardType="numeric"
+              placeholderTextColor="#7C888D"
+            />
 
-          <TextInput
-            style={styles.input}
-            placeholder="Drop-off Location"
-            value={location}
-            onChangeText={setLocation}
-          />
+            <TextInput
+              style={styles.input}
+              placeholder="Drop-off Location"
+              value={location}
+              onChangeText={setLocation}
+              placeholderTextColor="#7C888D"
+            />
 
-          <View style={styles.button}>
-            <Button title="Submit Report" onPress={handleSubmit} color="#3662AA" />
+            <View style={styles.submitBtn}>
+              <Button title="Submit Report" onPress={handleSubmit} color="#3662AA" />
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
+
+const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f4f7',
+    backgroundColor: '#fff',
   },
-  scroll: {
+  scrollContent: {
     flexGrow: 1,
     justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
+    paddingVertical: 30,
   },
-  form: {
-    backgroundColor: '#fff',
+  formContainer: {
+    width: '90%',
+    maxWidth: 400,
+    backgroundColor: '#F9FAFB',
+    borderRadius: 15,
     padding: 25,
-    borderRadius: 12,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 5,
+    shadowRadius: 8,
+    elevation: 4,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: '600',
     marginBottom: 25,
     textAlign: 'center',
     color: '#333',
   },
   input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 15,
-    fontSize: 15,
-    backgroundColor: '#fafafa',
+    borderBottomWidth: 1.5,
+    borderBottomColor: "#eee",
+    fontSize: 16,
+    paddingBottom: 10,
+    marginBottom: 20,
+    color: '#000',
   },
-  button: {
+  submitBtn: {
     marginTop: 10,
   },
 });

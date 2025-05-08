@@ -1,107 +1,77 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons'; // Make sure you have this installed
 
 type RootStackParamList = {
-  Map: undefined;
-  AddReport: undefined;
-  History: undefined;
-  Profile: undefined;
+    Map: undefined;
+    AddReport: undefined;
+    History: undefined;
+    Profile: undefined;
 };
 
 const MenuScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-  const menuItems = [
-    {
-      label: 'Make a Report',
-      icon: <MaterialIcons name="report" size={28} color="#fff" />,
-      color: '#f44336',
-      target: 'AddReport',
-    },
-    {
-      label: 'View Map',
-      icon: <Feather name="map-pin" size={28} color="#fff" />,
-      color: '#4caf50',
-      target: 'Map',
-    },
-    {
-      label: 'History',
-      icon: <FontAwesome5 name="history" size={24} color="#fff" />,
-      color: '#2196f3',
-      target: 'History',
-    },
-    {
-      label: 'Profile',
-      icon: <Feather name="user" size={28} color="#fff" />,
-      color: '#9e9e9e',
-      target: 'Profile',
-    },
-  ];
+    const menuItems = [
+        { title: 'View Map', icon: 'map-marked-alt', route: 'Map', color: '#2196F3' }, // Changed from Liquid Waste
+        { title: 'Add Report', icon: 'plus-circle', route: 'AddReport', color: '#4CAF50' }, // Changed from Organic Waste
+        { title: 'History', icon: 'history', route: 'History', color: '#607D8B' }, // Changed from Construction Waste
+        { title: 'Profile', icon: 'user', route: 'Profile', color: '#333333' }, // Changed from Electronic Waste
+    ];
 
-  return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <Text style={styles.pageTitle}>Menu</Text>
-      <View style={styles.grid}>
-        {menuItems.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[styles.card, { backgroundColor: item.color }]}
-            onPress={() => navigation.navigate(item.target as keyof RootStackParamList)}
-            activeOpacity={0.8}
-          >
-            <View style={styles.icon}>{item.icon}</View>
-            <Text style={styles.label}>{item.label}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    </ScrollView>
-  );
+    return (
+        <ScrollView style={styles.container}>
+            <View style={styles.buttonContainer}>
+                {menuItems.map((item) => (
+                    <TouchableOpacity
+                        key={item.title}
+                        style={[styles.button, { backgroundColor: item.color }]}
+                        onPress={() => navigation.navigate(item.route as keyof RootStackParamList)}
+                    >
+                        <FontAwesome5 name={item.icon} size={24} color="#fff" style={styles.icon} />
+                        <Text style={styles.buttonText}>{item.title}</Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
+        </ScrollView>
+    );
 };
 
-const screenWidth = Dimensions.get('window').width;
-const cardWidth = (screenWidth - 60) / 2; // Medium-sized cards with 20px margin
-
 const styles = StyleSheet.create({
-  scrollContainer: {
-    padding: 20,
-    backgroundColor: '#f7f7f7',
-  },
-  pageTitle: {
-    fontSize: 22,
-    fontWeight: '600',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: '#333',
-  },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  card: {
-    width: cardWidth,
-    height: cardWidth,
-    borderRadius: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 4,
-  },
-  icon: {
-    marginBottom: 10,
-  },
-  label: {
-    color: '#fff',
-    fontWeight: '600',
-    fontSize: 14,
-    textAlign: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#f0f0f0',
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center', // Center the buttons
+        padding: 10,
+    },
+    button: {
+        width: '40%', //  40% width for 2 buttons per row
+        aspectRatio: 1,
+        backgroundColor: '#4CAF50',
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        minWidth: 120,
+        maxWidth: 150,
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 5,
+    },
+    icon: {},
 });
-
 export default MenuScreen;
