@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient'; 
+import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
-
 
 type RootStackParamList = {
     Login: undefined;
@@ -16,64 +15,63 @@ const WelcomeScreen = () => {
     const windowHeight = Dimensions.get('window').height;
 
     return (
-        <LinearGradient 
-            colors={['#87CEEB', '#AFEEEE', '#E0FFFF']} // Light Blue Gradient - similar to image
+        <LinearGradient
+            colors={['#87CEEB', '#AFEEEE', '#E0FFFF']}
             style={styles.container}
         >
-            <View style={styles.contentContainer}>
-                <View style={styles.headerContainer}>
-                    <TouchableOpacity
-                        style={[styles.headerButton, { marginRight: 10 }]}
-                        onPress={() => navigation.navigate('Login')}
-                    >
-                        <Text style={styles.headerButtonText}>Log in</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.headerButton}
-                        onPress={() => navigation.navigate('Signup')}
-                    >
-                        <Text style={styles.headerButtonText}>Register</Text>
-                    </TouchableOpacity>
-                </View>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                <View style={styles.contentContainer}>
+                    <View style={styles.headerContainer}>
+                        <TouchableOpacity
+                            style={[styles.headerButton, { marginRight: 10 }]}
+                            onPress={() => navigation.navigate('Login')}
+                        >
+                            <Text style={styles.headerButtonText}>Log in</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.headerButton}
+                            onPress={() => navigation.navigate('Signup')}
+                        >
+                            <Text style={styles.headerButtonText}>Register</Text>
+                        </TouchableOpacity>
+                    </View>
 
-                <View style={styles.textContainer}>
-                <Image
-                        source={require('../assets/images/logo.png')} // Replace with your logo path
-                        style={styles.logo}
+                    <View style={styles.textContainer}>
+                        <Image
+                            source={require('../assets/images/logo.png')}
+                            style={styles.logo}
+                        />
+                        <Text style={styles.title}>TrashTracker</Text>
+                        <Text style={styles.subtitle}>
+                            Track Your Trash. Save Your Planet
+                        </Text>
+                    </View>
+
+                    <Image
+                        source={require('../assets/images/image.png')}
+                        style={{
+                            width: windowWidth * 0.9,
+                            height: windowHeight * 0.4,
+                            resizeMode: 'contain',
+                            marginTop: 20,
+                        }}
                     />
-                    <Text style={styles.title}>TrashTracker</Text>
-                    <Text style={styles.subtitle}>
-                    Track Your Trash. Save Your Planet
-                    </Text>
-                    {/* <TouchableOpacity style={styles.moreButton}>
-                        <Text style={styles.moreButtonText}>More &gt;&gt;</Text>
-                    </TouchableOpacity> */}
-                </View>
 
-                <Image
-                   source={require('../assets/images/image.png')}
-                    style={{
-                        width: windowWidth * 0.9, // Responsive width
-                        height: windowHeight * 0.4, // Responsive height
-                        resizeMode: 'contain', // Keep aspect ratio
-                        marginTop: 20,
-                    }}
-                />
-
-                <View style={styles.buttonContainer}>
-                    <View style={styles.circleContainer}>
-                        <View style={[styles.circle, { backgroundColor: '#8FBC8F' }]}>
-                            <Text style={styles.circleText}>GLASS</Text>
-                        </View>
-                        <View style={[styles.circle, { backgroundColor: '#F0E68C' }]}>
-                            <Text style={styles.circleText}>PLASTIC</Text>
-                        </View>
-                        <View style={[styles.circle, { backgroundColor: '#ADD8E6' }]}>
-                            <Text style={styles.circleText}>PAPER</Text>
+                    <View style={styles.buttonContainer}>
+                        <View style={styles.circleContainer}>
+                            <View style={[styles.circle, { backgroundColor: '#8FBC8F' }]}>
+                                <Text style={styles.circleText}>GLASS</Text>
+                            </View>
+                            <View style={[styles.circle, { backgroundColor: '#F0E68C' }]}>
+                                <Text style={styles.circleText}>PLASTIC</Text>
+                            </View>
+                            <View style={[styles.circle, { backgroundColor: '#ADD8E6' }]}>
+                                <Text style={styles.circleText}>PAPER</Text>
+                            </View>
                         </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </LinearGradient>
     );
 };
@@ -81,13 +79,17 @@ const WelcomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    scrollViewContent: { // New style for ScrollView content
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        flexGrow: 1, // Make sure content can grow to take up space
     },
     contentContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between', // Distribute content vertically
+        justifyContent: 'space-between',
         width: '100%',
     },
     headerContainer: {
@@ -98,53 +100,40 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     headerButton: {
-        backgroundColor: 'rgba(255,255,255,0.3)', // Semi-transparent white
+        backgroundColor: 'rgba(255,255,255,0.3)',
         paddingHorizontal: 12,
         paddingVertical: 6,
-        borderRadius: 15, // More rounded
+        borderRadius: 15,
         borderWidth: 1,
         borderColor: 'rgba(255,255,255,0.5)',
     },
     headerButtonText: {
-        color: '#444', // Darker text
+        color: '#444',
         fontWeight: 'bold',
         fontSize: 14,
     },
     textContainer: {
         alignItems: 'center',
         paddingHorizontal: 20,
-        marginTop: 20, // Add space above the text
+        marginTop: 20,
     },
     title: {
-        fontSize: 28, // Larger title
+        fontSize: 28,
         fontWeight: 'bold',
-        color: '#556B2F', // Dark Olive Green
+        color: '#556B2F',
         marginBottom: 10,
         textAlign: 'center',
     },
     subtitle: {
         fontSize: 16,
-        color: '#222', // Darker gray
+        color: '#222',
         textAlign: 'center',
         marginBottom: 15,
-    },
-    moreButton: {
-        backgroundColor: 'rgba(255,255,255,0.3)',
-        paddingHorizontal: 15,
-        paddingVertical: 8,
-        borderRadius: 20,
-        borderWidth: 1,
-        borderColor: 'rgba(255,255,255,0.5)',
-    },
-    moreButtonText: {
-        color: '#006400', // Dark Green
-        fontWeight: 'bold',
-        fontSize: 16,
     },
     buttonContainer: {
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: 20, // Add space at the bottom
+        marginBottom: 20,
     },
     circleContainer: {
         flexDirection: 'row',
@@ -154,7 +143,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     circle: {
-        width: 80, // Larger circles
+        width: 80,
         height: 80,
         borderRadius: 40,
         justifyContent: 'center',
@@ -163,7 +152,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.4,
         shadowRadius: 4,
-        elevation: 5, // For Android shadow
+        elevation: 5,
     },
     circleText: {
         color: 'white',
@@ -172,11 +161,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     logo: {
-        width: 100, // Adjust the width as needed
-        height: 100, // Adjust the height as needed
-        alignSelf: 'center',
+        width: 100,
+        height: 100,
+        resizeMode: 'contain',
         marginBottom: 20,
-    resizeMode: 'contain',
     },
 });
 

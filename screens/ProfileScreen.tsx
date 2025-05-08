@@ -8,7 +8,7 @@ import { ScrollView } from 'react-native'; // Import ScrollView
 const mockUser = {
     username: 'Nkwesi Ditich',
     email: 'nkwesiditrich@gmail.com',
-    address: 'Eco Nexus 42, Green City',
+    address: 'Logbaba',
     invitedFriends: 2,
     profilePicture: 'https://via.placeholder.com/100', // Added profile picture URL
 };
