@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { useReportContext } from '../Context/ReportContext';
-import { FontAwesome5 } from '@expo/vector-icons'; // Import icons
+import { FontAwesome5 } from '@expo/vector-icons'; 
 
 const HistoryScreen = () => {
     const { reports } = useReportContext();
 
-    // Function to get waste type icon
+   
     const getWasteTypeIcon = (type: string) => {
         const typeLower = type.toLowerCase();
         if (typeLower.includes('plastic')) return 'plastic';
@@ -14,7 +14,7 @@ const HistoryScreen = () => {
         if (typeLower.includes('paper')) return 'file-alt';
         if (typeLower.includes('glass')) return 'wine-bottle';
         if (typeLower.includes('metal')) return 'iron';
-        return 'trash'; // Default icon
+        return 'trash'; 
     };
 
     return (

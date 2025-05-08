@@ -11,7 +11,7 @@ export default function MapScreen() {
 
       <Image
          source={require('../assets/images/map.png')} 
-        style={[styles.mapImage, { width: '60%', height: 250 }]} // Full width and proper height
+        style={[styles.mapImage, { width: '60%', height: 250 }]} 
         resizeMode="cover"
       />
 

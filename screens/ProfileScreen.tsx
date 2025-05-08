@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { useReportContext } from '../Context/ReportContext';
-// import { Avatar } from 'react-native-elements'; //Removed react-native-elements
-import { Image } from 'react-native'; //Added Image
+import { Image } from 'react-native'; 
 import { ScrollView } from 'react-native'; // Import ScrollView
 
 const mockUser = {
@@ -10,7 +9,7 @@ const mockUser = {
     email: 'nkwesiditrich@gmail.com',
     address: 'Logbaba',
     invitedFriends: 2,
-    profilePicture: 'https://via.placeholder.com/100', // Added profile picture URL
+    profilePicture: 'https://via.placeholder.com/100', 
 };
 
 export default function ProfileScreen() {
@@ -49,7 +48,7 @@ export default function ProfileScreen() {
                     containerStyle={styles.avatar}
                 /> */}
                 <Image
-                    source={{ uri: mockUser.profilePicture }}  //Added Image
+                    source={{ uri: mockUser.profilePicture }}  
                     style={styles.avatar}
                 />
                 <View style={styles.headerTextContainer}>

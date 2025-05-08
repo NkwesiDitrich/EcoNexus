@@ -14,10 +14,10 @@ const MenuScreen = () => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const menuItems = [
-        { title: 'View Map', icon: 'map-marked-alt', route: 'Map', color: '#2196F3' }, // Changed from Liquid Waste
-        { title: 'Add Report', icon: 'plus-circle', route: 'AddReport', color: '#4CAF50' }, // Changed from Organic Waste
-        { title: 'History', icon: 'history', route: 'History', color: '#607D8B' }, // Changed from Construction Waste
-        { title: 'Profile', icon: 'user', route: 'Profile', color: '#333333' }, // Changed from Electronic Waste
+        { title: 'View Map', icon: 'map-marked-alt', route: 'Map', color: '#2196F3' }, 
+        { title: 'Add Report', icon: 'plus-circle', route: 'AddReport', color: '#4CAF50' }, 
+        { title: 'History', icon: 'history', route: 'History', color: '#607D8B' }, 
+        { title: 'Profile', icon: 'user', route: 'Profile', color: '#333333' }, 
     ];
 
     return (
