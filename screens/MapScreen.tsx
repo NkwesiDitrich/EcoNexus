@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
 import { collectionPoints } from '../data/mockData';
 
-export default function MapScreen() {
+export default function MapScreen() { 
   const screenWidth = Dimensions.get('window').width;
 
   return (

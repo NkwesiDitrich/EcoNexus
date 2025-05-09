@@ -18,7 +18,7 @@ const AddReportScreen = () => {
   const [type, setType] = useState('');
   const [weight, setWeight] = useState('');
   const [location, setLocation] = useState('');
-  const { addReport } = useReportContext();
+  const { addReport } = useReportContext();  // access to the addReport function from the report context
 
   const handleSubmit = () => {
     if (!type || !weight || !location) {
@@ -48,7 +48,7 @@ const AddReportScreen = () => {
       >
         <ScrollView
           contentContainerStyle={styles.scrollContent}
-          keyboardShouldPersistTaps="handled"
+          keyboardShouldPersistTaps="handled" // Ensures that taps on the input fields are handled correctly
         >
           <View style={styles.formContainer}>
             <Text style={styles.title}>Report Waste</Text>

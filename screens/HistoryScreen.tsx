@@ -3,11 +3,13 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { useReportContext } from '../Context/ReportContext';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 
-const HistoryScreen = () => {
-    const { reports } = useReportContext();
+const HistoryScreen = () => {  // Main component
+    // Access the reports from the context
+    const { reports } = useReportContext(); // Get reports from ReportContext file
 
    
-    const getWasteTypeIcon = (type: string) => {
+    const getWasteTypeIcon = (type: string) => { // Function to get the icon based on waste type
+        // Convert type to lowercase for case-insensitive comparison
         const typeLower = type.toLowerCase();
         if (typeLower.includes('plastic')) return 'plastic';
         if (typeLower.includes('organic')) return 'leaf';
@@ -20,9 +22,9 @@ const HistoryScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Collection History</Text>
-            <FlatList
+            <FlatList // used to rendere a scrollable list of items
                 data={reports}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.id} 
                 renderItem={({ item, index }) => (
                     <View style={styles.card}>
                         <View style={styles.row}>

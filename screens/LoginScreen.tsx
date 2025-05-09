@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Feather } from "@expo/vector-icons";
 import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '@react-navigation/native';
 
-export default function LoginScreen({ navigation }: { navigation: NavigationProp<any> }) {
+export default function LoginScreen({ navigation }: { navigation: NavigationProp<any> }) { // default exported component
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -13,8 +12,8 @@ export default function LoginScreen({ navigation }: { navigation: NavigationProp
     const [showPassword, setShowPassword] = useState(false);
 
     const validateAndLogin = () => {
-        setEmailError('');
-        setPasswordError('');
+        setEmailError(''); // Clear previous error
+        setPasswordError(''); 
 
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

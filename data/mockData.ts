@@ -1,5 +1,5 @@
 export const user = {
-  username: "Nkwesi",
+  username: "Nkwesi", 
   totalReports: 12,
   totalWeight: 24,
   wasteTypes: ["plastic", "organic", "verre"],
@@ -10,7 +10,7 @@ export const user = {
   badges: ["Tri Plastic", "Explorateur", "Ponctuel"]
 };
 
-export const collectionPoints = [
+export const collectionPoints = [ // export a mock array of collection point
   {
     id: '1',
     name: 'Collection Point A',
@@ -48,7 +48,7 @@ export const reports = [
     weight: 3
   }
 ];
-export const fetchCollectionPoints = async () => {
+export const fetchCollectionPoints = async () => { //Defines an asynchronous function that simulates fetching collection points
   return [
     { id: '1', type: 'Plastic', status: 'empty', distance: '500m' },
     { id: '2', type: 'Organic', status: 'full', distance: '2km' },

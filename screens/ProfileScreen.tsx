@@ -18,7 +18,7 @@ export default function ProfileScreen() {
     const totalReports = reports.length;
     const totalWeight = reports.reduce((sum, r) => sum + parseFloat(r.weight), 0);
     const uniqueTypes = [...new Set(reports.map(r => r.type.toLowerCase()))];
-    const visitedPoints = [...new Set(reports.map(r => r.location))];
+    const visitedPoints = [...new Set(reports.map(r => r.location))]; // Unique locations visited
 
     // Determine rank
     let rank = '🌱 Novice';

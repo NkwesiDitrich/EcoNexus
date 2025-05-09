@@ -3,17 +3,17 @@ import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-nati
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons'; // Make sure you have this installed
 
-type RootStackParamList = {
+type RootStackParamList = { // Define your navigation stack parameters
     Map: undefined;
     AddReport: undefined;
     History: undefined;
     Profile: undefined;
 };
 
-const MenuScreen = () => {
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+const MenuScreen = () => { 
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();// Use navigation prop
 
-    const menuItems = [
+    const menuItems = [ // create menu items to display
         { title: 'View Map', icon: 'map-marked-alt', route: 'Map', color: '#2196F3' }, 
         { title: 'Add Report', icon: 'plus-circle', route: 'AddReport', color: '#4CAF50' }, 
         { title: 'History', icon: 'history', route: 'History', color: '#607D8B' }, 
@@ -23,11 +23,11 @@ const MenuScreen = () => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.buttonContainer}>
-                {menuItems.map((item) => (
-                    <TouchableOpacity
+                {menuItems.map((item) => ( //loop over each item in the menuitem array
+                    <TouchableOpacity // Create a touchable button for each menu item
                         key={item.title}
                         style={[styles.button, { backgroundColor: item.color }]}
-                        onPress={() => navigation.navigate(item.route as keyof RootStackParamList)}
+                        onPress={() => navigation.navigate(item.route as keyof RootStackParamList)} // Navigate to the corresponding screen
                     >
                         <FontAwesome5 name={item.icon} size={24} color="#fff" style={styles.icon} />
                         <Text style={styles.buttonText}>{item.title}</Text>

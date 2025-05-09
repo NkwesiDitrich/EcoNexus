@@ -2,21 +2,22 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useReportContext } from '../Context/ReportContext';
-import { useEffect, useState } from 'react';
-import { collectionPoints } from '../data/mockData'; // pretend this fetches dynamic data
+/* import { useEffect, useState } from 'react'; */
+import { collectionPoints } from '../data/mockData'; // Import your collection points data
 import { FontAwesome5 } from '@expo/vector-icons'; // Import icons
 
-type RootStackParamList = {
+type RootStackParamList = { // Define navigation stack
     Menu: undefined;
 };
 
 const HomeScreen = () => {
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>(); // Use navigation prop
     const { reports } = useReportContext();
 
     // Simulated stats
-    const totalWaste = reports.reduce((sum, r) => sum + parseFloat(r.weight), 0);
-    const totalPoints = collectionPoints.length; // Use collectionPoints directly
+    
+    const totalWaste = reports.reduce((sum, r) => sum + parseFloat(r.weight), 0); // Calculate total waste collected
+    const totalPoints = collectionPoints.length; // count collectionPoints 
     const nextCollection = 'Tuesday, March 12, 2025 at 10:00 AM';
 
     return (

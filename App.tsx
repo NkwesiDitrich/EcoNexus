@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
 import WelcomeScreen from './screens/WelcomeScreen';
 import SignupScreen from './screens/SignupScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -12,11 +12,11 @@ import MenuScreen from './screens/MenuScreen';
 import { ReportProvider } from './Context/ReportContext'; 
 
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();  // stack navigator instance to manage the screen navigation.
 
 export default function App() {
   return (
-    <ReportProvider> {/* ✅ Wrap everything here */}
+    <ReportProvider> 
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Welcome">
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
