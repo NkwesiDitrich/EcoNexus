@@ -1,33 +1,35 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { FontAwesome5 } from '@expo/vector-icons'; // Make sure you have this installed
+import { FontAwesome5 } from '@expo/vector-icons';
 
-type RootStackParamList = { // Define your navigation stack parameters
+type RootStackParamList = {
     Map: undefined;
     AddReport: undefined;
     History: undefined;
     Profile: undefined;
+    Documentation: undefined; // Added Documentation screen
 };
 
-const MenuScreen = () => { 
-    const navigation = useNavigation<NavigationProp<RootStackParamList>>();// Use navigation prop
+const MenuScreen = () => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-    const menuItems = [ // create menu items to display
-        { title: 'View Map', icon: 'map-marked-alt', route: 'Map', color: '#2196F3' }, 
-        { title: 'Add Report', icon: 'plus-circle', route: 'AddReport', color: '#4CAF50' }, 
-        { title: 'History', icon: 'history', route: 'History', color: '#607D8B' }, 
-        { title: 'Profile', icon: 'user', route: 'Profile', color: '#333333' }, 
+    const menuItems = [
+        { title: 'View Map', icon: 'map-marked-alt', route: 'Map', color: '#2196F3' },
+        { title: 'Add Report', icon: 'plus-circle', route: 'AddReport', color: '#4CAF50' },
+        { title: 'History', icon: 'history', route: 'History', color: '#607D8B' },
+        { title: 'Profile', icon: 'user', route: 'Profile', color: '#333333' },
+        { title: 'Documentation', icon: 'book', route: 'Documentation', color: '#9C27B0' }, // New block
     ];
 
     return (
         <ScrollView style={styles.container}>
             <View style={styles.buttonContainer}>
-                {menuItems.map((item) => ( //loop over each item in the menuitem array
-                    <TouchableOpacity // Create a touchable button for each menu item
+                {menuItems.map((item) => (
+                    <TouchableOpacity
                         key={item.title}
                         style={[styles.button, { backgroundColor: item.color }]}
-                        onPress={() => navigation.navigate(item.route as keyof RootStackParamList)} // Navigate to the corresponding screen
+                        onPress={() => navigation.navigate(item.route as keyof RootStackParamList)}
                     >
                         <FontAwesome5 name={item.icon} size={24} color="#fff" style={styles.icon} />
                         <Text style={styles.buttonText}>{item.title}</Text>
@@ -46,13 +48,12 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'center', // Center the buttons
+        justifyContent: 'center',
         padding: 10,
     },
     button: {
-        width: '40%', //  40% width for 2 buttons per row
+        width: '40%',
         aspectRatio: 1,
-        backgroundColor: '#4CAF50',
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
@@ -74,4 +75,5 @@ const styles = StyleSheet.create({
     },
     icon: {},
 });
+
 export default MenuScreen;

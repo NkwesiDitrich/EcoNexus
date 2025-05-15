@@ -9,6 +9,7 @@ import AddReportScreen from './screens/AddReportScreen';
 import HistoryScreen from './screens/HistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import MenuScreen from './screens/MenuScreen';
+import DocumentationScreen from './screens/DocumentationScreen';
 import { ReportProvider } from './Context/ReportContext'; 
 
 
@@ -23,6 +24,7 @@ export default function App() {
           <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Map" component={MapScreen} />
+          <Stack.Screen name="Documentation" component={DocumentationScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="AddReport" component={AddReportScreen} />
           <Stack.Screen name="History" component={HistoryScreen} />

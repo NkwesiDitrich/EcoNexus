@@ -17,7 +17,7 @@ const HomeScreen = () => {
     // Simulated stats
     
     const totalWaste = reports.reduce((sum, r) => sum + parseFloat(r.weight), 0); // Calculate total waste collected
-    const totalPoints = collectionPoints.length; // count collectionPoints 
+    const totalPoints = (collectionPoints.length); // count collectionPoints 
     const nextCollection = 'Tuesday, March 12, 2025 at 10:00 AM';
 
     return (
